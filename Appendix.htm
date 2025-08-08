@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Supplementary Materials - Mathematical Appendices</title>
+<!-- MathJax for formula rendering -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>body {font-family: "Times New Roman", serif; max-width: 800px; margin: 0 auto; padding: 20px;}</style>
+</head>
+<body>
+
+<h1>APPENDIX</h1>
+
+<h2>Appendix A: Different node inertia coefficients and SCR calculation process</h2>
+
+<p>For each scenario, the multi-site short-circuit ratio (MRSCR) for renewable energy stations is calculated by Equation(A1)</p>
+$$ MRSCR_{t}=\left|\frac{\dot{U}_{i}^{*}\dot{U}_{Nt}}{\dot{Z}_{\text{eqt}}}\right|/\left|\dot{S}_{\text{RE}}+\sum_{j=1}^{n}\dot{\Pi}_{ij}\,\dot{S}_{\text{REj}}\right|\qquad(A1)$$
+<p>where $\dot{U}_{i}$ is the actual operating voltage at the $i$-th renewable bus, and $\dot{U}_{Nt}$ denotes the rated voltage at the same bus. $\dot{Z}_{eqt}$ is the diagonal element of the equivalent impedance matrix, representing the self-impedance at the point of common coupling. $\dot{S}_{REi}$ refers to the complex apparent power injected by the renewable resource at bus $i$. The coupling coefficient between $i$-th and $j$-th buses is defined as:</p>
+$$ \dot{\Pi}_{ij}=\frac{\dot{Z}_{eqt}\dot{U}_{i}^{*}}{\dot{Z}_{eqt}\dot{U}_{j}^{*}\dot{Z}_{eqt}} $$
+<p>The spatial variation of system inertia is reflected in the fact that, following a disturbance in the power system, different nodes exhibit significantly different frequency responses. To characterize this phenomenon, a system nodal inertia matrix is defined, representing the observed inertia at various nodes when a specific node experiences a disturbance. The matrix is expressed by Equation(A2):</p>
+$$ H=\begin{bmatrix}H_{t1}&H_{t2}&\cdots&H_{tN}\end{bmatrix}^{T}\qquad(A2) $$
+<p>Where $H_{ij}$ denotes the system inertia observed at node $j$ when a disturbance is applied at node $i$. Specifically, $H_{ii}$ represents the self-inertia coefficient of node $i$, while $H_{ij}$ (for $i \neq j$) quantifies the mutual inertia observed at node $j$ due to a disturbance at node $i$. These coefficients are calculated by Equations(A3)-(A4):</p>
+$$ H_{it}=-\Delta P_{e-l}\,/(2 df_{l}/dt)\qquad(A3) $$
+$$ H_{ij}=-\Delta P_{e-l}\,/(2 df_{j}/dt)\qquad(A4) $$
+<p>Where $\Delta P_{e-l}$ denotes the change in total system active power caused by a disturbance at node $i$, and $f_{i}$, $f_{j}$ represent the frequency measured at $i$-th and $j$-th nodes, respectively. These expressions quantitatively capture the coupling between frequency dynamics and the spatial distribution of system inertia across different nodes.</p>
+<p>For each operational scenario, the maximum value of MRSCR and the mutual inertia coefficient are identified for each node. The normalized node inertia coefficient $H_i$ and the normalized short-circuit ratio $SCR_i$ are then computed for each node individually.</p>
+
+<h2>Appendix B: Topology of the Power Grid System</h2>
+<!-- [Topology description or image] -->
+
+<table>
+<caption>Appendix Table 1. Solving Parameters for GFMES Optimization</caption>
+<tr><th>Parameter Type</th><th>Value</th></tr>
+<tr><td>Unit power investment cost $(10^{4} \text{CNY/MW}) C_{p}$</td><td>100</td></tr>
+<tr><td>Unit energy capacity investment cost $(10^{4} \text{CNY/MWh}) C_{cp}$</td><td>150</td></tr>
+<tr><td>Discount rate $r$</td><td>8%</td></tr>
+<tr><td>Lifetime (years) $N_{y}$</td><td>20</td></tr>
+<tr><td>Unit Power Maintenance Cost $(10^{4} \text{CNY/MW}) C_{o}$</td><td>25</td></tr>
+<tr><td>Unit Power Decommissioning Cost $(10^{4} \text{CNY/MW}) C_{pd}$</td><td>8</td></tr>
+<tr><td>Unit Energy Decommissioning Cost $(10^{4} \text{CNY/MWh}) C_{sd}$</td><td>0</td></tr>
+<tr><td>Contract Electricity Price $(10^{4} \text{CNY/MWh}) e$</td><td>0.05</td></tr>
+<tr><td>Number of Peak-Shaving Operation Days (days) $N_{p}$</td><td>360</td></tr>
+<tr><td>Number of frequency regulation operation days per year $N_{f}$</td><td>360</td></tr>
+<tr><td>Average Frequency Regulation Mileage Coefficient $\omega$</td><td>2.75</td></tr>
+<tr><td>Comprehensive Frequency Regulation Performance Index $K_{Ap}$</td><td>1.5</td></tr>
+<tr><td>Frequency mileage settlement price $(10^{4} \text{CNY/MW}) \lambda_{1}$</td><td>0.0015</td></tr>
+<tr><td>Coal-fired unit annual operating hours (h) $T$</td><td>5000</td></tr>
+<tr><td>Thermal Unit Lifetime (years) $M$</td><td>30</td></tr>
+<tr><td>Thermal Installation Cost per Capacity Unit $(10^{4} \text{CNY/MW}) P_{\text{thermal}}$</td><td>370</td></tr>
+<tr><td>Basic Peak Regulation Ratio of Thermal Units $q$</td><td>0.3</td></tr>
+<tr><td>Thermal Unit Maintenance Coefficient $\lambda_{2}$</td><td>0.1</td></tr>
+<tr><td>Unit Fuel Cost of Thermal Power (t/MWh) $W_{fuel}$</td><td>0.35</td></tr>
+<tr><td>Fuel Price of Thermal Power $(10^{4} \text{CNY/t}) C_{fuel}$</td><td>0.04</td></tr>
+<tr><td>NO<sub>x</sub> Emission Cost per Unit Generation $(10^{4} \text{CNY/MWh}) c_{NO_{x}}$</td><td>0.0010074</td></tr>
+<tr><td>SO<sub>2</sub> Emission Cost per Unit Generation $(10^{4} \text{CNY/MWh}) c_{SO_{2}}$</td><td>0.0002671</td></tr>
+<tr><td>CO<sub>2</sub> Emission Cost per Unit Generation $(10^{4} \text{CNY/MWh}) c_{CO_{2}}$</td><td>0.0018669</td></tr>
+</table>
+
+</body>
+</html>
